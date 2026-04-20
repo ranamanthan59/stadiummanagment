@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# StadiumPro: Smart Stadium Management System 🏟️
 
-## Getting Started
+Welcome to **StadiumPro**, an advanced cloud-based solution designed to transform the attendee experience at large-scale sporting and entertainment venues. This project was built for a high-stakes hackathon to solve real-world challenges like crowd congestion, long waiting times, and safety risks.
 
-First, run the development server:
+## 🚀 Live Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 1. Smart Crowd Management
+- **Real-time Density Tracking:** Monitors attendance across various stadium zones (North Stand, VIP Lounge, etc.).
+- **Visual Analytics:** Heatmaps and bar charts in the Admin Dashboard show which areas are reaching peak capacity.
+- **Dynamic Status:** Automatically flags zones as 'Normal', 'Crowded', or 'Overcrowded' based on live data.
+
+### 2. Queue Optimization
+- **Live Wait Times:** Calculates waiting times for food stalls, washrooms, and gates using the formula: `waiting_time = people_in_queue × average_service_time`.
+- **Intelligent Recommendations:** Suggests the "Least Busy" facilities to users to balance load across the stadium.
+- **Service Point Analytics:** Admins can monitor which stalls are underperforming or overwhelmed.
+
+### 3. Safety & Emergency System
+- **Congestion Alerts:** Triggers automatic notifications when a zone exceeds 90% capacity.
+- **Emergency Communication:** Push-style notifications in the attendee app for immediate broadcast of safety instructions.
+
+### 4. Admin Control Center
+- **Simulation Engine:** A built-in data simulator that mimics real-time crowd movement and queue fluctuations.
+- **Centralized Monitoring:** Single pane of glass for all stadium operations.
+
+---
+
+## 🛠️ Technical Stack
+
+- **Frontend:** Next.js 14, React, Tailwind CSS, Recharts, Framer Motion, Lucide Icons.
+- **Backend:** Next.js API Routes (Serverless), Node.js.
+- **Database:** MongoDB (with Mongoose ODM).
+- **Data Fetching:** SWR (for efficient real-time polling).
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── app/
+│   ├── admin/          # Admin Dashboard view
+│   ├── api/            # Backend REST API endpoints
+│   │   ├── facilities/ # Facility management
+│   │   ├── notifications/# Alerts and announcements
+│   │   ├── simulate/   # Data simulation engine
+│   │   └── zones/      # Crowd density data
+│   ├── layout.tsx      # Global layout
+│   └── page.tsx        # Attendee Mobile App view
+├── components/         # Reusable UI components
+├── lib/                # Database connection utilities
+└── models/             # Mongoose schemas (Zone, Facility, Notification)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📡 API Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Zones
+- `GET /api/zones`: Fetch all stadium zones and their current crowd status.
+- `POST /api/zones`: Create or update a zone.
 
-## Learn More
+### Facilities
+- `GET /api/facilities`: Get list of stalls, washrooms, and gates with queue data.
+- `POST /api/facilities`: Register a new facility.
 
-To learn more about Next.js, take a look at the following resources:
+### Notifications
+- `GET /api/notifications`: Get active alerts and announcements.
+- `POST /api/notifications`: Broadcast a new message.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Simulation
+- `POST /api/simulate`: Trigger a random data update to simulate a live event.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🌍 Real-World Impact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Safety:** Prevents stampedes and dangerous overcrowding by actively monitoring density and alerting staff/fans before critical levels are reached.
+2. **Efficiency:** Reduces "dead time" for fans in queues, leading to higher customer satisfaction and increased revenue for vendors.
+3. **Operational Excellence:** Provides stadium managers with data-driven insights to better allocate staff and security resources.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🚀 Deployment Steps
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repo-url>
+   cd smartcrwoudmenagementsystem
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment:**
+   Create a `.env.local` file and add your MongoDB URI:
+   ```env
+   MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/stadium
+   ```
+
+4. **Run locally:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Deploy to Vercel:**
+   Push to GitHub and connect your repository to Vercel. Don't forget to add the `MONGODB_URI` in Vercel's Environment Variables.
+
+---
+
+**Built with ❤️ for the Hackathon.**
+"# stadiummanagment" 
